@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオ | Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- パーティクル背景用Canvas -->
+    <canvas id="particles-canvas"></canvas>
+    
+    <!-- スクロール進行インジケーター -->
+    <div class="scroll-indicator"></div>
+    <!-- ナビゲーション -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#about">について</a></li>
+                <li><a href="#skills">スキル</a></li>
+                <li><a href="#projects">プロジェクト</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ヒーローセクション -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="greeting">こんにちは、</span>
+                    <span class="name glitch" data-text="John Adam">John Adam</span>
+                    <span class="title">です</span>
+                </h1>
+                <p class="hero-subtitle typewriter">Web開発者 / デザイナー</p>
+                <p class="hero-description">
+                    クリエイティブで使いやすいWebアプリケーションを制作しています。
+                    ユーザー体験を大切にし、最新の技術を活用した開発を行います。
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
+                    <a href="#contact" class="btn btn-secondary">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-placeholder">
+                    <div class="profile-3d">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="profileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0066ff;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="100" r="80" fill="url(#profileGradient)"/>
+                            <text x="100" y="120" font-size="60" fill="white" text-anchor="middle" font-weight="bold">Y</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- についてセクション -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">私について</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        こんにちは！私はWeb開発者として、フロントエンドからバックエンドまで
+                        幅広い技術を扱っています。ユーザー中心のデザイン思考を持ち、
+                        美しく機能的なWebアプリケーションの開発に情熱を注いでいます。
+                    </p>
+                    <p>
+                        常に新しい技術を学び、最新のトレンドを取り入れることで、
+                        より良いソリューションを提供することを心がけています。
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">プロジェクト</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label">年の経験</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">満足度</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- スキルセクション -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">スキル</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>フロントエンド</h3>
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="90">
+                            <span class="progress-fill"></span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>HTML5 / CSS3</li>
+                        <li>JavaScript / TypeScript</li>
+                        <li>React / Vue.js</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>バックエンド</h3>
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="85">
+                            <span class="progress-fill"></span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Python</li>
+                        <li>Database Design</li>
+                        <li>API Development</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>デザイン</h3>
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="80">
+                            <span class="progress-fill"></span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>UI/UX Design</li>
+                        <li>Figma</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>Prototyping</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🛠️</div>
+                    <h3>ツール</h3>
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="88">
+                            <span class="progress-fill"></span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>Docker</li>
+                        <li>CI/CD</li>
+                        <li>Testing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロジェクトセクション -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">プロジェクト</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-placeholder">Project 1</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Eコマースプラットフォーム</h3>
+                        <p>
+                            モダンなReactとNode.jsを使用したフルスタックEコマースアプリケーション。
+                            レスポンシブデザインとセキュアな決済システムを実装。
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">デモを見る</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-placeholder">Project 2</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>タスク管理アプリ</h3>
+                        <p>
+                            Vue.jsとFirebaseを使用したリアルタイムタスク管理アプリケーション。
+                            チームコラボレーション機能とドラッグ&ドロップインターフェース。
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">CSS3</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">デモを見る</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-placeholder">Project 3</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>天気予報アプリ</h3>
+                        <p>
+                            RESTful APIを活用した天気予報アプリケーション。
+                            美しいUIと直感的なUXを実現。位置情報ベースの天気情報を提供。
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API</span>
+                            <span class="tag">CSS3</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">デモを見る</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">お問い合わせ</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>お気軽にご連絡ください</h3>
+                    <p>
+                        プロジェクトのご相談やお仕事のご依頼など、
+                        お気軽にお問い合わせください。
+                    </p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>your.email@example.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <p>linkedin.com/in/yourprofile</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🐙</div>
+                            <div>
+                                <h4>GitHub</h4>
+                                <p>github.com/yourusername</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">メッセージ</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">送信する</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">🐙</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
