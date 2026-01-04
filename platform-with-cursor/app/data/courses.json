@@ -1,0 +1,177 @@
+[
+  {
+    "id": "nextjs-fundamentals",
+    "title": "Next.js基礎講座",
+    "description": "Next.js 16の基礎から応用まで、実践的なプロジェクトを通じて学習します。App Router、Server Components、データフェッチングなど、モダンなNext.js開発の基礎を身につけましょう。",
+    "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop",
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "イントロダクション",
+        "videos": [
+          {
+            "id": "video-1-1",
+            "title": "Next.jsとは？",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 300
+          },
+          {
+            "id": "video-1-2",
+            "title": "開発環境のセットアップ",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 450
+          }
+        ]
+      },
+      {
+        "id": "section-2",
+        "title": "App Routerの基礎",
+        "videos": [
+          {
+            "id": "video-2-1",
+            "title": "ルーティングの基本",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 600
+          },
+          {
+            "id": "video-2-2",
+            "title": "動的ルーティング",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 720
+          },
+          {
+            "id": "video-2-3",
+            "title": "レイアウトとテンプレート",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 540
+          }
+        ]
+      },
+      {
+        "id": "section-3",
+        "title": "データフェッチング",
+        "videos": [
+          {
+            "id": "video-3-1",
+            "title": "Server Componentsでのデータ取得",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 800
+          },
+          {
+            "id": "video-3-2",
+            "title": "キャッシュ戦略",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 650
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "react-advanced",
+    "title": "React上級者向け講座",
+    "description": "Reactの高度な機能とパターンを学びます。カスタムフック、パフォーマンス最適化、状態管理など、実践的なスキルを身につけましょう。",
+    "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop",
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "カスタムフック",
+        "videos": [
+          {
+            "id": "video-1-1",
+            "title": "カスタムフックの作成",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 500
+          },
+          {
+            "id": "video-1-2",
+            "title": "再利用可能なフックパターン",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 600
+          }
+        ]
+      },
+      {
+        "id": "section-2",
+        "title": "パフォーマンス最適化",
+        "videos": [
+          {
+            "id": "video-2-1",
+            "title": "React.memoとuseMemo",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 700
+          },
+          {
+            "id": "video-2-2",
+            "title": "コード分割と遅延読み込み",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 550
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "typescript-mastery",
+    "title": "TypeScript完全マスター",
+    "description": "TypeScriptの基礎から上級テクニックまで、型安全性を重視した開発手法を学びます。ジェネリクス、ユーティリティ型、型ガードなど、実践的なスキルを習得しましょう。",
+    "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop",
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "型システムの基礎",
+        "videos": [
+          {
+            "id": "video-1-1",
+            "title": "基本型と複合型",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 400
+          },
+          {
+            "id": "video-1-2",
+            "title": "インターフェースと型エイリアス",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 500
+          }
+        ]
+      },
+      {
+        "id": "section-2",
+        "title": "ジェネリクス",
+        "videos": [
+          {
+            "id": "video-2-1",
+            "title": "ジェネリクスの基本",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 600
+          },
+          {
+            "id": "video-2-2",
+            "title": "高度なジェネリクスパターン",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 750
+          }
+        ]
+      },
+      {
+        "id": "section-3",
+        "title": "ユーティリティ型",
+        "videos": [
+          {
+            "id": "video-3-1",
+            "title": "組み込みユーティリティ型",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 650
+          },
+          {
+            "id": "video-3-2",
+            "title": "カスタムユーティリティ型の作成",
+            "youtubeId": "dQw4w9WgXcQ",
+            "duration": 580
+          }
+        ]
+      }
+    ]
+  }
+]
+

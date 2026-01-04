@@ -1,0 +1,161 @@
+---
+alwaysApply: true
+---
+
+# プロジェクトルール
+
+## 📚 実装前の確認事項
+
+実装を始める前に、必ず以下のドキュメントを確認すること：
+
+1. **docs/requirements.md** - 要件定義書を確認し、実装する機能の要件を理解する
+2. **docs/TECH_STACK.md** - 使用する技術スタックを確認し、適切な技術を使用する
+3. **docs/PROGRESS.md** - 現在の進捗状況を確認し、実装するタスクを把握する
+4. **docs/README.md** - ドキュメント全体の構成を理解する
+
+実装前にこれらのドキュメントを確認することで、一貫性のある実装が可能になります。
+
+---
+
+## 🚀 Next.js 16.x ベストプラクティス（キャッシュ無効化）
+
+本プロジェクトでは、Next.js 16.1.1を使用しています。キャッシュコンポーネント有効化なしでのベストプラクティスを以下に記載します。
+
+### 1. 動的レンダリングの設定
+
+キャッシュを無効化する場合は、ページまたはルートハンドラーで以下の設定を使用する：
+
+```typescript
+// ページ全体を動的にする場合
+export const dynamic = 'force-dynamic'
+
+// または、再検証を無効にする場合
+export const revalidate = 0
+```
+
+**使用例：**
+```typescript
+// app/courses/[id]/page.tsx
+export const dynamic = 'force-dynamic'
+
+export default function CourseDetailPage() {
+  // ...
+}
+```
+
+### 2. Server ComponentsとClient Componentsの使い分け
+
+- **Server Components（デフォルト）**: データフェッチング、データベースアクセス、バックエンドAPI呼び出しに使用
+- **Client Components**: インタラクティブな機能（useState、useEffect、イベントハンドラー）が必要な場合のみ使用
+
+**Client Componentの指定：**
+```typescript
+'use client'
+
+export default function InteractiveComponent() {
+  // useState, useEffect, イベントハンドラーなど
+}
+```
+
+### 3. データフェッチング
+
+- Server Componentsでは`async/await`を直接使用可能
+- `fetch`を使用する場合は、`cache: 'no-store'`または`revalidate: 0`を指定してキャッシュを無効化
+
+```typescript
+// キャッシュ無効化の例
+const data = await fetch(url, {
+  cache: 'no-store', // または revalidate: 0
+})
+```
+
+### 4. 型安全性の確保
+
+- TypeScriptの型定義を必ず使用する
+- `app/types/`ディレクトリに型定義を配置する
+- Props、データ構造、APIレスポンスに型を付ける
+
+```typescript
+// app/types/course.ts
+export interface Course {
+  id: string
+  title: string
+  description: string
+  thumbnail: string
+  sections: Section[]
+}
+```
+
+### 5. App Routerのベストプラクティス
+
+- **ファイルベースルーティング**: `app/`ディレクトリ内のファイル構造がルートを決定
+- **レイアウト**: `layout.tsx`を使用して共通レイアウトを実装
+- **ローディング状態**: `loading.tsx`を使用してローディングUIを実装
+- **エラーハンドリング**: `error.tsx`を使用してエラーUIを実装
+- **メタデータ**: `metadata`オブジェクトまたは`generateMetadata`関数を使用
+
+### 6. パフォーマンス最適化
+
+- **画像最適化**: `next/image`コンポーネントを使用
+- **フォント最適化**: `next/font`を使用してフォントを最適化
+- **コード分割**: 動的インポート（`dynamic`）を使用して必要な時だけコンポーネントを読み込む
+
+```typescript
+import dynamic from 'next/dynamic'
+
+const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <p>Loading...</p>,
+})
+```
+
+### 7. コンポーネントの構造
+
+- **再利用可能なコンポーネント**: `app/components/`ディレクトリに配置
+- **ページ固有のコンポーネント**: 各ページディレクトリ内に配置
+- **コンポーネント名**: PascalCaseを使用
+- **ファイル名**: kebab-caseまたはPascalCaseを使用（プロジェクト全体で統一）
+
+### 8. スタイリング
+
+- **Tailwind CSS**: ユーティリティクラスを使用
+- **レスポンシブデザイン**: Tailwindのブレークポイントを使用（`sm:`, `md:`, `lg:`など）
+- **ダークモード**: `dark:`プレフィックスを使用
+
+### 9. エラーハンドリング
+
+- Server Componentsでは`try-catch`を使用
+- Client Componentsではエラーバウンダリーを使用
+- ユーザーフレンドリーなエラーメッセージを表示
+
+### 10. 環境変数
+
+- `.env.local`ファイルに機密情報を保存
+- `NEXT_PUBLIC_`プレフィックスを付けた変数のみクライアント側で使用可能
+- 環境変数の型定義を`env.d.ts`に追加
+
+---
+
+## 📝 コーディング規約
+
+- **インデント**: 2スペース
+- **セミコロン**: 使用する
+- **クォート**: シングルクォート（`'`）を使用
+- **命名規則**:
+  - コンポーネント: PascalCase
+  - 関数・変数: camelCase
+  - 定数: UPPER_SNAKE_CASE
+  - ファイル名: kebab-caseまたはPascalCase（コンポーネントの場合）
+
+---
+
+## ✅ 実装時のチェックリスト
+
+実装時は以下を確認すること：
+
+- [ ] docsディレクトリの関連ドキュメントを確認した
+- [ ] 適切なServer Component / Client Componentの使い分けをしている
+- [ ] TypeScriptの型定義を適切に使用している
+- [ ] エラーハンドリングを実装している
+- [ ] レスポンシブデザインに対応している
+- [ ] アクセシビリティを考慮している（alt属性、aria-labelなど）
+- [ ] パフォーマンスを考慮している（画像最適化、コード分割など）
