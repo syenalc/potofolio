@@ -62,14 +62,14 @@ export default async function WatchPage({ params, searchParams }: WatchPageProps
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-[var(--muted)]">
       {/* ヘッダー */}
-      <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+      <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <Link
               href={`/courses/${course.id}`}
-              className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+              className="inline-flex items-center text-sm font-medium text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
             >
               <svg
                 className="mr-2 h-4 w-4"
@@ -86,7 +86,7 @@ export default async function WatchPage({ params, searchParams }: WatchPageProps
               </svg>
               コース詳細に戻る
             </Link>
-            <h1 className="hidden text-lg font-semibold text-gray-900 dark:text-gray-100 sm:block">
+            <h1 className="hidden truncate text-lg font-semibold text-[var(--foreground)] sm:block">
               {course.title}
             </h1>
           </div>
@@ -94,7 +94,7 @@ export default async function WatchPage({ params, searchParams }: WatchPageProps
       </header>
 
       {/* メインコンテンツ */}
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <VideoPlayer
           course={course}
           initialVideo={initialVideo}

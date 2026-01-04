@@ -83,29 +83,31 @@ export default function VideoPlayer({
   };
 
   return (
-    <div className="grid gap-6 lg:grid-cols-3">
+    <div className="grid gap-8 lg:grid-cols-3">
       {/* 左側: 動画プレーヤー */}
       <div className="lg:col-span-2">
-        <div className="space-y-4">
+        <div className="space-y-6">
           {/* 動画タイトル */}
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-xl bg-[var(--card)] p-6 border border-[var(--border)] shadow-sm">
+            <h2 className="text-xl font-bold tracking-tight text-[var(--foreground)] sm:text-2xl">
               {currentVideo.title}
             </h2>
-            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-2 text-sm font-medium text-[var(--muted-foreground)]">
               {course.sections[currentSectionIndex].title}
             </p>
           </div>
 
           {/* YouTubeプレーヤー */}
-          <YouTubePlayer videoId={currentVideo.youtubeId} onEnd={handleVideoEnd} />
+          <div className="overflow-hidden rounded-xl shadow-lg">
+            <YouTubePlayer videoId={currentVideo.youtubeId} onEnd={handleVideoEnd} />
+          </div>
         </div>
       </div>
 
       {/* 右側: 動画リスト */}
       <div className="lg:col-span-1">
-        <div className="sticky top-6">
-          <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+        <div className="sticky top-8">
+          <h2 className="mb-6 text-lg font-semibold text-[var(--foreground)]">
             コース内容
           </h2>
           <VideoList

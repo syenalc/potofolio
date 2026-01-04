@@ -10,33 +10,34 @@ export default function CourseCard({ course }: CourseCardProps) {
   return (
     <Link
       href={`/courses/${course.id}`}
-      className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] dark:border-gray-800 dark:bg-gray-900"
+      className="group flex flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-sm transition-all duration-200 hover:border-[var(--accent)]/20 hover:shadow-md"
       aria-label={`${course.title}の詳細を見る`}
     >
       {/* サムネイル画像 */}
-      <div className="relative aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+      <div className="relative aspect-video w-full overflow-hidden bg-[var(--muted)]">
         <Image
           src={course.thumbnail}
           alt={`${course.title}のサムネイル画像`}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           loading="lazy"
         />
+        <div className="absolute inset-0 bg-black/0 transition-colors duration-200 group-hover:bg-black/5" />
       </div>
 
       {/* コース情報 */}
-      <div className="flex flex-1 flex-col p-4">
-        <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-gray-900 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400">
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="mb-3 line-clamp-2 text-lg font-semibold leading-snug text-[var(--card-foreground)] transition-colors duration-200 group-hover:text-[var(--accent)]">
           {course.title}
         </h3>
-        <p className="mb-4 line-clamp-2 flex-1 text-sm text-gray-600 dark:text-gray-400">
+        <p className="mb-6 line-clamp-2 flex-1 text-sm leading-relaxed text-[var(--muted-foreground)]">
           {course.description}
         </p>
 
         {/* 統計情報 */}
-        <div className="mt-auto flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
-          <span className="flex items-center gap-1">
+        <div className="mt-auto flex items-center gap-6 border-t border-[var(--border)] pt-4">
+          <span className="flex items-center gap-2 text-xs font-medium text-[var(--muted-foreground)]">
             <svg
               className="h-4 w-4"
               fill="none"
@@ -52,7 +53,7 @@ export default function CourseCard({ course }: CourseCardProps) {
             </svg>
             {course.sectionCount} セクション
           </span>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-2 text-xs font-medium text-[var(--muted-foreground)]">
             <svg
               className="h-4 w-4"
               fill="none"

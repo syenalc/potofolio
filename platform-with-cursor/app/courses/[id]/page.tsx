@@ -54,13 +54,13 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
   }, 0);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-[var(--muted)]">
       {/* ヘッダー */}
-      <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+      <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+            className="inline-flex items-center text-sm font-medium text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
           >
             <svg
               className="mr-2 h-4 w-4"
@@ -81,17 +81,17 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
       </header>
 
       {/* メインコンテンツ */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-3">
+      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-3">
           {/* 左側: コース詳細情報 */}
           <div className="lg:col-span-2">
             {/* コースタイトル */}
-            <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <h1 className="mb-6 text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">
               {course.title}
             </h1>
 
             {/* コース画像 */}
-            <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+            <div className="relative mb-8 aspect-video w-full overflow-hidden rounded-xl bg-[var(--muted)] shadow-md">
               <Image
                 src={course.thumbnail}
                 alt={course.title}
@@ -102,41 +102,47 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
             </div>
 
             {/* コース説明 */}
-            <div className="mb-8">
-              <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
+            <div className="mb-10">
+              <h2 className="mb-4 text-xl font-semibold text-[var(--foreground)]">
                 コースについて
               </h2>
-              <p className="whitespace-pre-line text-gray-700 dark:text-gray-300">
-                {course.description}
-              </p>
+              <div className="rounded-lg bg-[var(--card)] p-6 border border-[var(--border)]">
+                <p className="whitespace-pre-line leading-relaxed text-[var(--muted-foreground)]">
+                  {course.description}
+                </p>
+              </div>
             </div>
 
             {/* セクション一覧 */}
             <div className="mb-8">
-              <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
+              <h2 className="mb-6 text-xl font-semibold text-[var(--foreground)]">
                 コース内容
               </h2>
               <div className="space-y-4">
                 {course.sections.map((section, sectionIndex) => (
                   <div
                     key={section.id}
-                    className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900"
+                    className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-sm"
                   >
-                    <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
-                      {sectionIndex + 1}. {section.title}
-                    </h3>
-                    <ul className="space-y-2">
+                    <div className="border-b border-[var(--border)] bg-[var(--muted)] px-6 py-4">
+                      <h3 className="text-lg font-semibold text-[var(--foreground)]">
+                        {sectionIndex + 1}. {section.title}
+                      </h3>
+                    </div>
+                    <ul className="divide-y divide-[var(--border)]">
                       {section.videos.map((video, videoIndex) => (
                         <li
                           key={video.id}
-                          className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"
+                          className="flex items-center gap-4 px-6 py-4 transition-colors hover:bg-[var(--muted)]"
                         >
-                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-200 text-xs font-medium dark:bg-gray-700">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--muted)] text-xs font-semibold text-[var(--muted-foreground)]">
                             {videoIndex + 1}
                           </span>
-                          <span className="flex-1">{video.title}</span>
+                          <span className="flex-1 text-sm font-medium text-[var(--card-foreground)]">
+                            {video.title}
+                          </span>
                           {video.duration && (
-                            <span className="text-xs">
+                            <span className="text-xs font-medium text-[var(--muted-foreground)]">
                               {formatDuration(video.duration)}
                             </span>
                           )}
@@ -151,31 +157,31 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
 
           {/* 右側: サイドバー（統計情報とボタン） */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div className="sticky top-8 rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-md">
               {/* 統計情報 */}
-              <div className="mb-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="mb-8 space-y-5">
+                <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
+                  <span className="text-sm font-medium text-[var(--muted-foreground)]">
                     セクション数
                   </span>
-                  <span className="font-semibold text-gray-900 dark:text-gray-100">
+                  <span className="text-lg font-bold text-[var(--foreground)]">
                     {totalSections}
                   </span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
+                  <span className="text-sm font-medium text-[var(--muted-foreground)]">
                     動画数
                   </span>
-                  <span className="font-semibold text-gray-900 dark:text-gray-100">
+                  <span className="text-lg font-bold text-[var(--foreground)]">
                     {totalVideos}
                   </span>
                 </div>
                 {totalDuration > 0 && (
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                    <span className="text-sm font-medium text-[var(--muted-foreground)]">
                       総時間
                     </span>
-                    <span className="font-semibold text-gray-900 dark:text-gray-100">
+                    <span className="text-lg font-bold text-[var(--foreground)]">
                       {formatDuration(totalDuration)}
                     </span>
                   </div>
@@ -185,8 +191,27 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
               {/* 「コースを見る」ボタン */}
               <Link
                 href={`/courses/${course.id}/watch`}
-                className="block w-full rounded-lg bg-blue-600 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 py-3 text-center text-sm font-semibold text-[var(--accent-foreground)] transition-all duration-200 hover:bg-[var(--accent)]/90 hover:shadow-md active:scale-[0.98]"
               >
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
                 コースを見る
               </Link>
             </div>

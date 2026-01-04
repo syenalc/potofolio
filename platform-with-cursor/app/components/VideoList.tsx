@@ -69,17 +69,17 @@ export default function VideoList({
   const nextVideo = getNextVideo();
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       {/* 次の動画ボタン */}
       {nextVideo && (
         <button
           onClick={() => onVideoSelect(nextVideo.video, nextVideo.sectionIndex, nextVideo.videoIndex)}
-          className="w-full rounded-lg bg-blue-600 px-4 py-3 text-left font-semibold text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+          className="group w-full rounded-xl bg-[var(--accent)] px-5 py-4 text-left font-semibold text-[var(--accent-foreground)] shadow-md transition-all duration-200 hover:bg-[var(--accent)]/90 hover:shadow-lg active:scale-[0.98]"
         >
           <div className="flex items-center justify-between">
-            <span>次の動画</span>
+            <span className="text-sm">次の動画</span>
             <svg
-              className="h-5 w-5"
+              className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -92,129 +92,141 @@ export default function VideoList({
               />
             </svg>
           </div>
-          <p className="mt-1 text-sm font-normal opacity-90">
+          <p className="mt-2 line-clamp-2 text-sm font-normal opacity-95">
             {nextVideo.video.title}
           </p>
         </button>
       )}
 
       {/* セクションリスト */}
-      {sections.map((section, sectionIndex) => (
-        <div
-          key={section.id}
-          className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900"
-        >
-          {/* セクションヘッダー */}
-          <button
-            onClick={() => toggleSection(section.id)}
-            className="flex w-full items-center justify-between px-4 py-3 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
-            aria-expanded={expandedSections.has(section.id)}
-            aria-controls={`section-${section.id}`}
+      <div className="space-y-2">
+        {sections.map((section, sectionIndex) => (
+          <div
+            key={section.id}
+            className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-sm"
           >
-            <div className="flex items-center gap-3">
-              <svg
-                className={`h-5 w-5 transition-transform duration-200 ${
-                  expandedSections.has(section.id) ? 'rotate-90' : ''
-                }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-              <span className="font-semibold text-gray-900 dark:text-gray-100">
-                {sectionIndex + 1}. {section.title}
-              </span>
-            </div>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {section.videos.length} 動画
-            </span>
-          </button>
-
-          {/* 動画リスト */}
-          {expandedSections.has(section.id) && (
-            <div
-              id={`section-${section.id}`}
-              className="border-t border-gray-200 dark:border-gray-800"
+            {/* セクションヘッダー */}
+            <button
+              onClick={() => toggleSection(section.id)}
+              className="flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-[var(--muted)]"
+              aria-expanded={expandedSections.has(section.id)}
+              aria-controls={`section-${section.id}`}
             >
-              {section.videos.map((video, videoIndex) => {
-                const isCurrent = video.id === currentVideoId;
-                const isWatched = watchedVideos.has(video.id);
+              <div className="flex items-center gap-3">
+                <svg
+                  className={`h-5 w-5 text-[var(--muted-foreground)] transition-transform duration-200 ${
+                    expandedSections.has(section.id) ? 'rotate-90' : ''
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+                <span className="font-semibold text-[var(--foreground)]">
+                  {sectionIndex + 1}. {section.title}
+                </span>
+              </div>
+              <span className="rounded-full bg-[var(--muted)] px-2.5 py-1 text-xs font-medium text-[var(--muted-foreground)]">
+                {section.videos.length}
+              </span>
+            </button>
 
-                return (
-                  <button
-                    key={video.id}
-                    onClick={() => onVideoSelect(video, sectionIndex, videoIndex)}
-                    className={`flex w-full items-center gap-3 px-4 py-3 text-left transition-colors duration-200 ${
-                      isCurrent
-                        ? 'bg-blue-50 text-blue-900 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'hover:bg-gray-50 dark:hover:bg-gray-800'
-                    }`}
-                    aria-current={isCurrent ? 'true' : undefined}
-                    aria-label={`${video.title}を再生${isWatched ? '（視聴済み）' : ''}`}
-                  >
-                    {/* チェックマークまたは再生アイコン */}
-                    <div className="flex-shrink-0">
-                      {isWatched ? (
-                        <svg
-                          className="h-5 w-5 text-green-600 dark:text-green-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+            {/* 動画リスト */}
+            {expandedSections.has(section.id) && (
+              <div
+                id={`section-${section.id}`}
+                className="divide-y divide-[var(--border)] border-t border-[var(--border)]"
+              >
+                {section.videos.map((video, videoIndex) => {
+                  const isCurrent = video.id === currentVideoId;
+                  const isWatched = watchedVideos.has(video.id);
+
+                  return (
+                    <button
+                      key={video.id}
+                      onClick={() => onVideoSelect(video, sectionIndex, videoIndex)}
+                      className={`flex w-full items-start gap-4 px-5 py-4 text-left transition-all duration-200 ${
+                        isCurrent
+                          ? 'bg-[var(--accent)]/10 text-[var(--accent)]'
+                          : 'hover:bg-[var(--muted)] text-[var(--card-foreground)]'
+                      }`}
+                      aria-current={isCurrent ? 'true' : undefined}
+                      aria-label={`${video.title}を再生${isWatched ? '（視聴済み）' : ''}`}
+                    >
+                      {/* チェックマークまたは再生アイコン */}
+                      <div className="mt-0.5 flex-shrink-0">
+                        {isWatched ? (
+                          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10">
+                            <svg
+                              className="h-4 w-4 text-green-600 dark:text-green-400"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2.5}
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                          </div>
+                        ) : (
+                          <div className={`flex h-6 w-6 items-center justify-center rounded-full border-2 ${
+                            isCurrent
+                              ? 'border-[var(--accent)] bg-[var(--accent)]/10'
+                              : 'border-[var(--border)]'
+                          }`}>
+                            {isCurrent && (
+                              <div className="h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
+                            )}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* 動画情報 */}
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className={`text-sm leading-snug ${
+                            isCurrent
+                              ? 'font-semibold'
+                              : 'font-medium'
+                          }`}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      ) : (
-                        <div className="flex h-5 w-5 items-center justify-center rounded-full border-2 border-gray-300 dark:border-gray-600">
-                          {isCurrent && (
-                            <div className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-400" />
-                          )}
+                          {video.title}
+                        </p>
+                        {video.duration && (
+                          <p className={`mt-1.5 text-xs ${
+                            isCurrent
+                              ? 'text-[var(--accent)]/70'
+                              : 'text-[var(--muted-foreground)]'
+                          }`}>
+                            {formatDuration(video.duration)}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* 現在視聴中インジケーター */}
+                      {isCurrent && (
+                        <div className="flex-shrink-0 pt-1">
+                          <div className="h-2 w-2 animate-pulse rounded-full bg-[var(--accent)]" />
                         </div>
                       )}
-                    </div>
-
-                    {/* 動画情報 */}
-                    <div className="flex-1">
-                      <p
-                        className={`text-sm ${
-                          isCurrent
-                            ? 'font-semibold'
-                            : 'font-medium text-gray-700 dark:text-gray-300'
-                        }`}
-                      >
-                        {video.title}
-                      </p>
-                      {video.duration && (
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                          {formatDuration(video.duration)}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* 現在視聴中インジケーター */}
-                    {isCurrent && (
-                      <div className="flex-shrink-0">
-                        <div className="h-2 w-2 animate-pulse rounded-full bg-blue-600 dark:bg-blue-400" />
-                      </div>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      ))}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

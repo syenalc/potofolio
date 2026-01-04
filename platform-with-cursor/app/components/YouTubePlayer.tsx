@@ -77,7 +77,7 @@ export default function YouTubePlayer({ videoId, onEnd }: YouTubePlayerProps) {
   }, [videoId]);
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
+    <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-xl">
       <div id={playerId} className="h-full w-full" />
     </div>
   );
