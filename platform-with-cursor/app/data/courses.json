@@ -1,0 +1,173 @@
+{
+  "courses": [
+    {
+      "id": "nextjs-fundamentals",
+      "title": "Next.js基礎講座",
+      "description": "Next.js 16の基礎から応用まで、実践的なプロジェクトを通じて学習します。App Router、Server Components、データフェッチングなど、モダンなNext.js開発の基礎を身につけましょう。",
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "イントロダクション",
+          "videos": [
+            {
+              "id": "video-1-1",
+              "title": "Next.jsとは？",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 300
+            },
+            {
+              "id": "video-1-2",
+              "title": "開発環境のセットアップ",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 450
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "App Routerの基礎",
+          "videos": [
+            {
+              "id": "video-2-1",
+              "title": "ファイルベースルーティング",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 600
+            },
+            {
+              "id": "video-2-2",
+              "title": "Server ComponentsとClient Components",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 720
+            },
+            {
+              "id": "video-2-3",
+              "title": "レイアウトとネスト",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 540
+            }
+          ]
+        },
+        {
+          "id": "section-3",
+          "title": "データフェッチング",
+          "videos": [
+            {
+              "id": "video-3-1",
+              "title": "Server Componentsでのデータフェッチング",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 660
+            },
+            {
+              "id": "video-3-2",
+              "title": "キャッシュと再検証",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 480
+            }
+          ]
+        }
+      ],
+      "createdAt": "2024-01-01",
+      "updatedAt": "2024-01-15"
+    },
+    {
+      "id": "react-advanced",
+      "title": "React上級者向け講座",
+      "description": "Reactの高度な機能を学びます。カスタムフック、パフォーマンス最適化、状態管理パターンなど、実践的なテクニックを習得しましょう。",
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "カスタムフック",
+          "videos": [
+            {
+              "id": "video-1-1",
+              "title": "カスタムフックの作成",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 420
+            },
+            {
+              "id": "video-1-2",
+              "title": "再利用可能なロジックの分離",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 580
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "パフォーマンス最適化",
+          "videos": [
+            {
+              "id": "video-2-1",
+              "title": "React.memoとuseMemo",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 650
+            },
+            {
+              "id": "video-2-2",
+              "title": "コード分割と遅延読み込み",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 520
+            }
+          ]
+        }
+      ],
+      "createdAt": "2024-01-10",
+      "updatedAt": "2024-01-20"
+    },
+    {
+      "id": "typescript-mastery",
+      "title": "TypeScript完全マスター",
+      "description": "TypeScriptの基礎から上級テクニックまで、型安全性を活用した開発手法を学びます。ジェネリクス、ユーティリティ型、型ガードなど、実践的な知識を習得します。",
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "型システムの基礎",
+          "videos": [
+            {
+              "id": "video-1-1",
+              "title": "基本型と型推論",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 380
+            },
+            {
+              "id": "video-1-2",
+              "title": "インターフェースとタイプエイリアス",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 450
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "高度な型",
+          "videos": [
+            {
+              "id": "video-2-1",
+              "title": "ジェネリクス",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 600
+            },
+            {
+              "id": "video-2-2",
+              "title": "ユーティリティ型",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 550
+            },
+            {
+              "id": "video-2-3",
+              "title": "型ガードとアサーション",
+              "youtubeId": "dQw4w9WgXcQ",
+              "duration": 480
+            }
+          ]
+        }
+      ],
+      "createdAt": "2024-01-05",
+      "updatedAt": "2024-01-18"
+    }
+  ]
+}
+
