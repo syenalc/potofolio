@@ -20,12 +20,17 @@ export interface Course {
   description: string;
   thumbnail: string;
   sections: Section[];
+  createdAt?: string;
+  updatedAt?: string;
 }
 
-// コース統計情報の型定義
-export interface CourseStats {
-  totalSections: number;
-  totalVideos: number;
-  totalDuration?: number; // 秒単位（オプション）
+// コース一覧用の簡易型（サムネイル表示用）
+export interface CourseSummary {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  sectionCount: number;
+  videoCount: number;
 }
 
